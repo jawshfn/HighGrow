@@ -1,0 +1,18 @@
+/* App.css */
+.App {
+  text-align: center;
+}
+
+.currency {
+  margin: 20px;
+}
+
+/* Plant.css */
+.plant {
+  margin: 20px;
+}
+
+.plant button {
+  padding: 10px;
+  cursor: pointer;
+}
