@@ -1,0 +1,5 @@
+/* src/styles/Upgrade.css */
+.upgrade button {
+  /* Adjusting padding to accommodate the new text and cost */
+  padding: 5px 15px;
+}

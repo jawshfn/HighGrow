@@ -1,0 +1,23 @@
+/* src/styles/Manager.css */
+.manager {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .manager button {
+    background-color: #76c7c0;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .manager button:hover {
+    background-color: #5ba8a0;
+  }
+  

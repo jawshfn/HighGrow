@@ -1,0 +1,22 @@
+/* src/styles/Plant.css */
+.plant {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    width: 100%;
+    background-color: #e0e0df;
+    margin: 10px;
+  }
+  
+  .progress {
+    height: 100%;
+    width: 0;
+    background-color: #76c7c0;
+  }
+  
