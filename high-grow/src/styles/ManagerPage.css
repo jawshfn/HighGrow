@@ -1,0 +1,16 @@
+/* src/styles/ManagerPage.css */
+.back-button {
+    display: inline-block;
+    background-color: #6B8E23; /* Olive Drab */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .back-button:hover {
+    background-color: #556B2F; /* Dark Olive Green */
+  }
+  
