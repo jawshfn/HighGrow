@@ -1,5 +1,23 @@
 /* src/styles/Upgrade.css */
-.upgrade button {
-  /* Adjusting padding to accommodate the new text and cost */
-  padding: 5px 15px;
+.upgrade {
+  background-color: #f5f5dc; /* Beige */
+  border: 1px solid #d2b48c; /* Tan */
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #6B8E23; /* Olive Drab */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #556B2F; /* Dark Olive Green */
 }

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { harvest, updateProgress } from '../redux/gameSlice';
 import '../styles/Plant.css'; // Updated import statement
 
-function Plant({ id, name, growthTime, progress, lastUpdated }) {
+function Plant({ id, name, growthTime, progress, lastUpdated, level }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ function Plant({ id, name, growthTime, progress, lastUpdated }) {
   return (
     <div className="plant">
       <h3>{name}</h3>
+      <p>Level: {level}</p>
       <div className="progress-bar">
         <div className="progress" style={{ width: `${progressPercentage}%` }}></div>
       </div>
