@@ -1,6 +1,6 @@
 // src/components/ManagerPage.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { hireManager } from '../redux/gameSlice';
 import '../styles/ManagerPage.css'; // Importing CSS
@@ -29,7 +29,7 @@ function ManagerPage({ onHire }) {
           <div className="manager-container" key={manager.id}>
             <p>{manager.name}</p>
             <p>Cost: {manager.cost}</p>
-            <button onClick={() => handleHire(manager.id)}>Hire</button>
+            <button onClick={() => handleHire(manager.id)} className="hire-button">Hire</button>
           </div>
         ))}
       </div>
