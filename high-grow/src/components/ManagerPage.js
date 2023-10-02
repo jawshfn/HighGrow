@@ -17,7 +17,7 @@ function ManagerPage({ onHire }) {
   return (
     <div className="manager-page">
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/game">Home</Link> {/* Updated Link */}
         <Link to="/managers">Managers</Link>
       </nav>
       <div className="currency-container">

@@ -15,9 +15,9 @@ function MainApp() {
     <div>
       {location.pathname !== '/' && (
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/managers">Managers</Link>
-        </nav>
+        <Link to="/game">Home</Link> {/* Updated Link */}
+        <Link to="/managers">Managers</Link>
+      </nav>
       )}
       {location.pathname !== '/' && (
         <div className="currency-container">

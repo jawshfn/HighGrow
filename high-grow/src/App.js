@@ -2,8 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ManagerPage from './components/ManagerPage';
-import HomeScreen from './components/HomeScreen';
-import MainContent from './components/MainContent'; // Importing MainContent component
+import MainContent from './components/MainContent'; // MainContent component
+import StartScreen from './components/StartScreen'; // Updated import
 import './styles/App.css';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/managers" element={<ManagerPage />} />
-          <Route path="/game" element={<MainContent />} /> {/* Using MainContent component */}
-          <Route path="/" element={<HomeScreen />} />
+          <Route path="/game" element={<MainContent />} /> {/* MainContent component */}
+          <Route path="/" element={<StartScreen />} /> {/* Updated Route */}
         </Routes>
       </div>
     </Router>
