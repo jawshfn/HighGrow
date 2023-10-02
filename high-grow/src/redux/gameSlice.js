@@ -6,7 +6,7 @@ import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    currency: 100000000,
+    currency: 100,
     plants: [
       { id: 1, name: 'OG KUSH', growthTime: 5000, progress: 0, lastUpdated: Date.now(), level: 0, harvestValue: 10 }
     ],

@@ -1,13 +1,14 @@
 // src/components/Plant.js
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { harvest, updateProgress } from '../redux/gameSlice';
+import { harvest, updateProgress, purchaseUpgrade } from '../redux/gameSlice';
 import '../styles/Plant.css'; // Updated import statement
 import ProgressBar from '../components/ProgressBar';
 import {calculateHarvestValue} from '../helpers';
 import { formatNumber } from '../util/formatNumber';
+import Upgrade from './Upgrade';
 
-function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue }) {
+function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue, upgrades }) {
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -21,7 +22,7 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
   const harvestValue = calculateHarvestValue(baseHarvestValue, level); // Use the same calculation
   const progressPercentage = (progress / growthTime) * 100;
   const cps = harvestValue && growthTime ? ((harvestValue / growthTime) * 1000).toFixed(2) : 0; // added check here
-  
+  const canHarvest = progress >= growthTime;
   return (
     <div className="plant">
       <h3>{name}</h3>
@@ -34,11 +35,19 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
         </div>
         <ProgressBar progress={progress} max={growthTime} />
       </div>
-      {progressPercentage < 100 ? (
-        <p>Growing...</p>
-      ) : (
-        <button onClick={() => dispatch(harvest())}>Harvest {formatNumber(harvestValue)}</button>
-      )}
+      
+      <div className="buttons-container">
+      <button 
+          className="harvest-button" 
+          onClick={() => dispatch(harvest())} 
+          disabled={!canHarvest} // Disable the button if the plant cannot be harvested
+        >
+          Harvest {formatNumber(harvestValue)}
+        </button>
+        {upgrades.map((upgrade) => (
+          <Upgrade key={upgrade.id} {...upgrade} onPurchase={() => dispatch(purchaseUpgrade(upgrade.id))} />
+        ))}
+        </div>
     </div>
   );
 }

@@ -35,17 +35,31 @@ p {
   margin-top: 10px; /* Adjust as needed */
   margin-bottom: 10px; /* Adjust as needed */
 }
-
-button {
-  background-color: #6B8E23; /* Olive Drab */
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+.buttons-container {
+  display: flex; /* Aligns children (buttons) in a row */
+  justify-content: space-between; /* Maximizes the space between buttons */
+  align-items: center; /* Vertically centers the buttons */
 }
 
-button:hover {
-  background-color: #556B2F; /* Dark Olive Green */
+button.harvest-button {
+  background: linear-gradient(135deg, #6B8E23, #556B2F); /* Olive Drab Gradient */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow Effect */
+  transition: all 0.3s ease-in-out; /* Transition Effect */
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+}
+
+button.harvest-button:hover {
+  background: linear-gradient(135deg, #556B2F, #6B8E23); /* Hover Effect */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Hover Shadow Effect */
+}
+
+button.harvest-button:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Active State Shadow */
+  transform: translateY(2px); /* Active State Move Down */
+}
+.harvest-button:disabled {
+  background-color: #A9A9A9; /* DarkGray */
+  cursor: not-allowed;
 }

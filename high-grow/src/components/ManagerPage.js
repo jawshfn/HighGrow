@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { hireManager } from '../redux/gameSlice';
 import '../styles/ManagerPage.css'; // Importing CSS
+import { formatNumber } from '../util/formatNumber';
 
 function ManagerPage({ onHire }) {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function ManagerPage({ onHire }) {
         <Link to="/managers">Managers</Link>
       </nav>
       <div className="currency-container">
-        <h2>Currency: {currency}</h2>
+        <h2>Currency: {formatNumber(currency)}</h2>
       </div>
       <h1>Managers</h1>
       <div className="managers-container">

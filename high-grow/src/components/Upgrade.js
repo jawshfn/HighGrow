@@ -8,8 +8,9 @@ import { formatNumber } from '../util/formatNumber';
 function Upgrade({ id, name, cost, effect, value }) {
   const dispatch = useDispatch();
   const currency = useSelector((state) => state.game.currency); // Getting the current currency from the store
-  
-  const handlePurchase = () => {
+  const canPurchase = currency >= cost;
+
+   const handlePurchase = () => {
     if (currency >= cost) {
       dispatch(purchaseUpgrade(id));
     }
@@ -18,7 +19,13 @@ function Upgrade({ id, name, cost, effect, value }) {
   return (
     <div className="upgrade">
       {/* Displaying "Upgrade" along with its updated cost */}
-      <button onClick={handlePurchase}>Upgrade {formatNumber(cost)}</button>
+      <button 
+        className={`upgrade-button ${canPurchase ? '' : 'insufficient-funds'}`} 
+        onClick={handlePurchase} 
+        disabled={!canPurchase}
+      >
+        Buy for {formatNumber(cost)}
+        </button>
     </div>
   );
 }

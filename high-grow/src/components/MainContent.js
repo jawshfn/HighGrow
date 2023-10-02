@@ -29,12 +29,7 @@ function MainApp() {
         <h1>High Grow</h1>
         {plants.map((plant) => (
           <div className="plant-container" key={plant.id}>
-            <Plant {...plant} baseHarvestValue={plant.harvestValue} />
-            <div className="actions-container">
-              {upgrades.map((upgrade) => (
-                <Upgrade key={upgrade.id} {...upgrade} onPurchase={() => dispatch(purchaseUpgrade(upgrade.id))} />
-              ))}
-            </div>
+            <Plant {...plant} baseHarvestValue={plant.harvestValue}upgrades={upgrades.filter(upgrade => upgrade.plantId === plant.id)} />
           </div>
         ))}
       </div>

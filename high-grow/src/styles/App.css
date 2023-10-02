@@ -41,6 +41,8 @@ nav a:hover {
 
 .plant-container,
 .actions-container {
-  margin: 20px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex; /* Aligns children (Plant and Upgrade components) in a row */
+  justify-content: space-between; /* Maximizes the space between Plant and Upgrade components */
+  align-items: center; /* Vertically centers the Plant and Upgrade components */
 }
+
