@@ -1,13 +1,20 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
+import { calculateUpgradeCost } from '../helpers';
+
+
+const calculateHarvestValue = (baseValue, level) => {
+
+  const levelMultiplier = 1 + (0.1 * level);
+  return Math.floor(baseValue * levelMultiplier);
+};
 
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
     currency: 100000,
-    harvestValue: 10,
     plants: [
-      { id: 1, name: 'OG KUSH', growthTime: 5000, progress: 0, lastUpdated: Date.now(), level: 0 }
+      { id: 1, name: 'OG KUSH', growthTime: 5000, progress: 0, lastUpdated: Date.now(), level: 0, harvestValue: 10 }
     ],
     upgrades: [
       { id: 1, name: 'Better Soil', cost: 50, effect: 'increaseYield', value: 20, plantId: 1}
@@ -19,20 +26,14 @@ const gameSlice = createSlice({
   reducers: {
     harvest: (state) => {
       state.plants.forEach(plant => {
-
-
-
-        
+        if(plant.level > 0) {
         // Calculating harvestValue based on the level of the plant
-        const levelMultiplier = 1 + (0.1 * plant.level); // 0.1 is the increase per level; adjust as needed
-        const plantHarvestValue = state.harvestValue * levelMultiplier;
-
-
+        const plantHarvestValue = calculateHarvestValue(plant.harvestValue, plant.level);
+        console.log(plantHarvestValue);
         state.currency += plantHarvestValue;
-        state.currency = Math.floor(state.currency);
-        
         plant.progress = 0;
         plant.lastUpdated = Date.now();
+        }
       });
     },
     purchaseUpgrade: (state, action) => {
@@ -40,16 +41,22 @@ const gameSlice = createSlice({
       if (state.currency >= upgrade.cost) {
         state.currency -= upgrade.cost;
         state.currency = Math.floor(state.currency);
-        // Apply the upgrade
+       
         if (upgrade.effect === 'increaseYield') {
-          state.harvestValue += (state.harvestValue * upgrade.value) / 100;
+          const plant = state.plants.find((p) => p.id === upgrade.plantId);
+          if (plant) {
+            
+            plant.level++;
+            plant.harvestValue = calculateHarvestValue(plant.harvestValue, plant.level);
+            
+            // Milestone Benefits
+            if (plant.level === 25) plant.growthTime /= 2; // 100% increase in production speed
+            if (plant.level === 50) plant.harvestValue *= 2; // Double the harvest amount
+            if (plant.level === 100) plant.harvestValue *= 3; // Triple the harvest amount at level 100
+          }
         }
-
-         // Increasing the level of the associated plant
-         const plant = state.plants.find((p) => p.id === upgrade.plantId);
-         if (plant) plant.level++;
-         // Increasing the cost of the upgrade exponentially
-         upgrade.cost = Math.ceil(upgrade.cost * 1.2); // 1.07 is the multiplier; you can adjust it as needed
+        
+        upgrade.cost = calculateUpgradeCost(upgrade.cost); // Use helper function
       }
     },
     hireManager: (state, action) => {
@@ -65,11 +72,13 @@ const gameSlice = createSlice({
         // Calculating progress based on elapsed time since last updated
         const currentTime = Date.now();
         state.plants.forEach(plant => {
+          if(plant && plant.level > 0) {
           const elapsed = currentTime - plant.lastUpdated;
           plant.progress = Math.min(plant.progress + elapsed, plant.growthTime);
           plant.lastUpdated = currentTime;
+          }
         });
-      }
+      },
   }
 });
 

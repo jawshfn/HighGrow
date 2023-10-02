@@ -1,0 +1,24 @@
+/* src/styles/ProgressBar.css */
+.progress-bar {
+    background-color: #DCDCDC; /* Gainsboro */
+    border-radius: 4px;
+    height: 20px;
+    overflow: hidden;
+    position: relative; /* Added to position the label */
+}
+
+.progress {
+    background-color: #6B8E23; /* Olive Drab */
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-label {
+    position: absolute; /* Absolute positioning */
+    width: 100%; /* Full width of the progress bar */
+    text-align: center; /* Center the text */
+    line-height: 20px; /* Align text vertically */
+    font-weight: bold; /* Make text bold */
+    color: #000000; /* Set color to black */
+    background-color: rgba(255, 255, 255, 0.7); 
+}

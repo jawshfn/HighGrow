@@ -17,18 +17,9 @@ p {
   margin: 5px 0;
   color: #4CAF50; /* Green */
 }
-
-.progress-bar {
-  background-color: #DCDCDC; /* Gainsboro */
-  border-radius: 4px;
-  height: 20px;
-  overflow: hidden;
-}
-
-.progress {
-  background-color: #6B8E23; /* Olive Drab */
-  height: 100%;
-  transition: width 0.5s ease-in-out;
+.progress-container {
+  margin-top: 10px; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed */
 }
 
 button {

@@ -2,9 +2,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { useDispatch, useSelector } from 'react-redux';
-import { hireManager, purchaseUpgrade } from '../redux/gameSlice';
+import { purchaseUpgrade } from '../redux/gameSlice';
 import Plant from './Plant';
 import Upgrade from './Upgrade';
+import CurrencyDisplay from './CurrencyDisplay';
+
 
 function MainApp() {
   const dispatch = useDispatch();
@@ -20,15 +22,13 @@ function MainApp() {
       </nav>
       )}
       {location.pathname !== '/' && (
-        <div className="currency-container">
-          <h2>Currency: {currency}</h2>
-        </div>
+        <CurrencyDisplay currency={currency} /> // Use the new component
       )}
       <div className="game-container">
         <h1>High Grow</h1>
         {plants.map((plant) => (
           <div className="plant-container" key={plant.id}>
-            <Plant {...plant} />
+            <Plant {...plant} baseHarvestValue={plant.harvestValue} />
             <div className="actions-container">
               {upgrades.map((upgrade) => (
                 <Upgrade key={upgrade.id} {...upgrade} onPurchase={() => dispatch(purchaseUpgrade(upgrade.id))} />

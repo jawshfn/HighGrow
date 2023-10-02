@@ -3,36 +3,39 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { harvest, updateProgress } from '../redux/gameSlice';
 import '../styles/Plant.css'; // Updated import statement
+import ProgressBar from '../components/ProgressBar';
+import {calculateHarvestValue} from '../helpers';
 
-function Plant({ id, name, growthTime, progress, lastUpdated, level }) {
+function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue }) {
+  console.log('baseHarvestValue:', baseHarvestValue);
+  console.log('level:', level);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    // Dispatching updateProgress action when component mounts
     dispatch(updateProgress());
-
-    // Setting up an interval to dispatch updateProgress action periodically
     const intervalId = setInterval(() => {
       dispatch(updateProgress());
-    }, 1000); // Updating every second
-
-    // Clearing the interval when the component unmounts
+    }, 1000);
     return () => clearInterval(intervalId);
   }, [dispatch]);
-
+  
+  const harvestValue = calculateHarvestValue(baseHarvestValue, level); // Use the same calculation
   const progressPercentage = (progress / growthTime) * 100;
-
+  const cps = harvestValue && growthTime ? ((harvestValue / growthTime) * 1000).toFixed(2) : 0; // added check here
+  
   return (
     <div className="plant">
       <h3>{name}</h3>
       <p>Level: {level}</p>
-      <div className="progress-bar">
-        <div className="progress" style={{ width: `${progressPercentage}%` }}></div>
-      </div>
+      <p>Growth Time: {growthTime ? (growthTime / 1000).toFixed(2) : 0} s</p> {/* added check here */}
+      <p>Currency per Second: {cps}</p>
+      <div className="progress-container">
+                <ProgressBar progress={progress} max={growthTime} /> {/* Use ProgressBar component */}
+            </div>
       {progressPercentage < 100 ? (
         <p>Growing...</p>
       ) : (
-        <button onClick={() => dispatch(harvest())}>Harvest</button>
+        <button onClick={() => dispatch(harvest())}>Harvest {harvestValue}</button>
       )}
     </div>
   );
