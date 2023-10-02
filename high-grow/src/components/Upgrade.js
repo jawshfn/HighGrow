@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { purchaseUpgrade } from '../redux/gameSlice';
 import '../styles/Upgrade.css'; // Updated import statement
+import { formatNumber } from '../util/formatNumber';
 
 function Upgrade({ id, name, cost, effect, value }) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function Upgrade({ id, name, cost, effect, value }) {
   return (
     <div className="upgrade">
       {/* Displaying "Upgrade" along with its updated cost */}
-      <button onClick={handlePurchase}>Upgrade {cost}</button>
+      <button onClick={handlePurchase}>Upgrade {formatNumber(cost)}</button>
     </div>
   );
 }

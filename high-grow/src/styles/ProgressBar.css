@@ -1,24 +1,25 @@
 /* src/styles/ProgressBar.css */
 .progress-bar {
     background-color: #DCDCDC; /* Gainsboro */
-    border-radius: 4px;
+    border-radius: 12px; /* Added for rounded corners */
     height: 20px;
     overflow: hidden;
-    position: relative; /* Added to position the label */
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2); /* Added for shadow effect */
+    position: relative; /* Added for positioning the label */
 }
 
 .progress {
     background-color: #6B8E23; /* Olive Drab */
     height: 100%;
     transition: width 0.5s ease-in-out;
+    border-radius: 12px; /* Added for rounded corners */
 }
 
 .progress-label {
-    position: absolute; /* Absolute positioning */
-    width: 100%; /* Full width of the progress bar */
-    text-align: center; /* Center the text */
-    line-height: 20px; /* Align text vertically */
-    font-weight: bold; /* Make text bold */
-    color: #000000; /* Set color to black */
-    background-color: rgba(255, 255, 255, 0.7); 
+    position: absolute; /* Added for absolute positioning */
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF; /* White */
+    font-weight: bold; /* Bold font */
+    line-height: 20px; /* Align vertically */
 }

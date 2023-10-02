@@ -18,6 +18,20 @@ p {
   color: #4CAF50; /* Green */
 }
 .progress-container {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-label {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #000; /* Adjust color for visibility */
+  z-index: 1; /* Ensure label is above the progress bar */
+}
+
+.progress-container {
   margin-top: 10px; /* Adjust as needed */
   margin-bottom: 10px; /* Adjust as needed */
 }

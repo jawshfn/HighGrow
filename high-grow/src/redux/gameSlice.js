@@ -1,18 +1,12 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { calculateUpgradeCost } from '../helpers';
+import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
 
-
-const calculateHarvestValue = (baseValue, level) => {
-
-  const levelMultiplier = 1 + (0.1 * level);
-  return Math.floor(baseValue * levelMultiplier);
-};
 
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    currency: 100000,
+    currency: 100000000,
     plants: [
       { id: 1, name: 'OG KUSH', growthTime: 5000, progress: 0, lastUpdated: Date.now(), level: 0, harvestValue: 10 }
     ],
@@ -53,10 +47,14 @@ const gameSlice = createSlice({
             if (plant.level === 25) plant.growthTime /= 2; // 100% increase in production speed
             if (plant.level === 50) plant.harvestValue *= 2; // Double the harvest amount
             if (plant.level === 100) plant.harvestValue *= 3; // Triple the harvest amount at level 100
+
+
+            
           }
+          upgrade.cost = calculateUpgradeCost(upgrade.cost, plant.level); // Use helper function
         }
         
-        upgrade.cost = calculateUpgradeCost(upgrade.cost); // Use helper function
+        
       }
     },
     hireManager: (state, action) => {

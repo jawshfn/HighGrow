@@ -6,6 +6,7 @@ import { purchaseUpgrade } from '../redux/gameSlice';
 import Plant from './Plant';
 import Upgrade from './Upgrade';
 import CurrencyDisplay from './CurrencyDisplay';
+import {formatNumber} from '../util/formatNumber';
 
 
 function MainApp() {
@@ -22,7 +23,7 @@ function MainApp() {
       </nav>
       )}
       {location.pathname !== '/' && (
-        <CurrencyDisplay currency={currency} /> // Use the new component
+        <CurrencyDisplay currency={formatNumber(currency)} /> // Use the new component
       )}
       <div className="game-container">
         <h1>High Grow</h1>

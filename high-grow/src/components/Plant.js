@@ -5,10 +5,9 @@ import { harvest, updateProgress } from '../redux/gameSlice';
 import '../styles/Plant.css'; // Updated import statement
 import ProgressBar from '../components/ProgressBar';
 import {calculateHarvestValue} from '../helpers';
+import { formatNumber } from '../util/formatNumber';
 
 function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue }) {
-  console.log('baseHarvestValue:', baseHarvestValue);
-  console.log('level:', level);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -30,12 +29,15 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
       <p>Growth Time: {growthTime ? (growthTime / 1000).toFixed(2) : 0} s</p> {/* added check here */}
       <p>Currency per Second: {cps}</p>
       <div className="progress-container">
-                <ProgressBar progress={progress} max={growthTime} /> {/* Use ProgressBar component */}
-            </div>
+      <div className="progress-label">
+          {progressPercentage.toFixed(2)}% {/* Render progress percentage */}
+        </div>
+        <ProgressBar progress={progress} max={growthTime} />
+      </div>
       {progressPercentage < 100 ? (
         <p>Growing...</p>
       ) : (
-        <button onClick={() => dispatch(harvest())}>Harvest {harvestValue}</button>
+        <button onClick={() => dispatch(harvest())}>Harvest {formatNumber(harvestValue)}</button>
       )}
     </div>
   );
