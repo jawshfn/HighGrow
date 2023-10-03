@@ -39,7 +39,7 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
       <div className="buttons-container">
       <button 
           className="harvest-button" 
-          onClick={() => dispatch(harvest())} 
+          onClick={() => dispatch(harvest(id))} 
           disabled={!canHarvest} // Disable the button if the plant cannot be harvested
         >
           Harvest {formatNumber(harvestValue)}

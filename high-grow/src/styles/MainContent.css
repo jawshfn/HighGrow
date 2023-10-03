@@ -1,0 +1,16 @@
+h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.currency-container {
+    background-color: #eafbea; /* Light Green */
+    border: 1px solid #99e699; /* Green */
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #228B22; /* Forest Green */
+    position: sticky; /* Make the position sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it's above other content */
+  }

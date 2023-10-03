@@ -1,28 +1,39 @@
 /* src/styles/Plant.css */
 .plant {
   background-color: #eafbea; /* Light Green */
-  border: 1px solid #99e699; /* Green */
+  border: 2px solid #306130; /* Green */
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
   text-align: center;
 }
 
-h3 {
-  margin: 0 0 10px 0;
-  color: #228B22; /* Forest Green */
-}
 
-p {
-  margin: 5px 0;
-  color: #4CAF50; /* Green */
+/* Plant Info */
+.plant h3, .plant p {
+  font-family: 'Roboto', sans-serif;
+  color: #000000; /* Text Color */
+  margin: 8px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
+/* Progress Bar */
 .progress-container {
   position: relative;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin: 15px 0;
+  background-color: #ffffff; /* Text Color */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0px a1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.progress-bar {
+  height: 22px;
+  background-color: #a72828; /* Primary Color */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Progress bar % */
 .progress-label {
   position: absolute;
   width: 100%;
@@ -30,36 +41,32 @@ p {
   color: #000; /* Adjust color for visibility */
   z-index: 1; /* Ensure label is above the progress bar */
 }
-
-.progress-container {
-  margin-top: 10px; /* Adjust as needed */
-  margin-bottom: 10px; /* Adjust as needed */
-}
+/* Buttons Container */
 .buttons-container {
-  display: flex; /* Aligns children (buttons) in a row */
-  justify-content: space-between; /* Maximizes the space between buttons */
-  align-items: center; /* Vertically centers the buttons */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: px 0;
 }
 
-button.harvest-button {
-  background: linear-gradient(135deg, #6B8E23, #556B2F); /* Olive Drab Gradient */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow Effect */
-  transition: all 0.3s ease-in-out; /* Transition Effect */
+.button {
+  background-color: #ffc107; /* Accent Color */
+  color: #6c757d; /* Secondary Color */
+  border: none;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
-}
-
-button.harvest-button:hover {
-  background: linear-gradient(135deg, #556B2F, #6B8E23); /* Hover Effect */
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Hover Shadow Effect */
-}
-
-button.harvest-button:active {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Active State Shadow */
-  transform: translateY(2px); /* Active State Move Down */
+  padding: 12px 24px;
+  cursor: pointer;
+  font-family: 'Luckiest Guy', cursive;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 .harvest-button:disabled {
   background-color: #A9A9A9; /* DarkGray */
   cursor: not-allowed;
 }
+.upgrade-button:disabled {
+  background-color: #A9A9A9; /* DarkGray */
+  cursor: not-allowed;
+}
+

@@ -28,16 +28,7 @@ nav a:hover {
   justify-content: center;
   margin-top: 20px;
 }
-.currency-container {
-  background-color: #eafbea; /* Light Green */
-  border: 1px solid #99e699; /* Green */
-  border-radius: 8px;
-  padding: 10px;
-  margin: 20px;
-  text-align: center;
-  font-size: 1.5em;
-  color: #228B22; /* Forest Green */
-}
+
 
 .plant-container,
 .actions-container {
@@ -45,4 +36,5 @@ nav a:hover {
   justify-content: space-between; /* Maximizes the space between Plant and Upgrade components */
   align-items: center; /* Vertically centers the Plant and Upgrade components */
 }
+
 
