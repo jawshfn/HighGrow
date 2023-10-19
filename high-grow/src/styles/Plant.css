@@ -1,20 +1,22 @@
 /* src/styles/Plant.css */
 .plant {
-  background-color: #eafbea; /* Light Green */
-  border: 2px solid #306130; /* Green */
+  background-color: #111; /* Dark background for neon to pop */
+  border: 2px solid #0f0; /* Neon green border */
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
   text-align: center;
+  box-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
 }
 
 
 /* Plant Info */
 .plant h3, .plant p {
   font-family: 'Roboto', sans-serif;
-  color: #000000; /* Text Color */
+  color: #0f0; /* Neon green text */
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
   margin: 8px 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
 }
 /* Progress Bar */
 .progress-container {
@@ -29,7 +31,7 @@
 
 .progress-bar {
   height: 22px;
-  background-color: #a72828; /* Primary Color */
+  background-color: #0f0; /* Neon green progress bar */
   transition: width 0.3s ease-in-out;
 }
 
@@ -48,25 +50,41 @@
   justify-content: space-between;
   width: 100%;
   margin: px 0;
+  
 }
 
 .button {
-  background-color: #ffc107; /* Accent Color */
-  color: #6c757d; /* Secondary Color */
-  border: none;
+  background-color: #111; /* Dark background for neon to pop */
+  color: #00f; /* Neon blue text */
+  border: 2px solid #00f; /* Neon blue border */
   border-radius: 8px;
   padding: 12px 24px;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 5px #00f, 0 0 10px #00f; /* Neon blue glow */
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
-.harvest-button:disabled {
-  background-color: #A9A9A9; /* DarkGray */
-  cursor: not-allowed;
+.button:hover {
+  background-color: #000080; /* Darker blue on hover */
 }
+.harvest-button:enabled {
+  border: 2px solid #0f0; /* Neon green border */
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
+  background-color: #007bff;
+}
+.upgrade-button:enabled {
+
+    border: 2px solid #0f0; /* Neon green border */
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
+    background-color: #007bff;
+  
+}
+.harvest-button:disabled,
 .upgrade-button:disabled {
-  background-color: #A9A9A9; /* DarkGray */
+  background-color: #7c0303; /* Dark background for neon to pop */
+  color: #f00; /* Neon red text */
+  border: 2px solid #f00; /* Neon red border */
   cursor: not-allowed;
+  text-shadow: 0 0 5px #f00, 0 0 10px #f00; /* Neon red glow */
 }
 

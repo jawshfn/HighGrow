@@ -19,13 +19,6 @@
     font-weight: bold;
   }
   
-  .currency-container {
-    background-color: #6B8E23; /* Olive Drab */
-    color: #fff;
-    padding: 10px;
-    margin-top: 20px;
-  }
-  
   .managers-container {
     display: flex;
     flex-wrap: wrap;

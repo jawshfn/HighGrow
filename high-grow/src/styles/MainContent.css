@@ -2,15 +2,26 @@ h1 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .currency-container {
-    background-color: #eafbea; /* Light Green */
-    border: 1px solid #99e699; /* Green */
+    background-color: #111; /* Dark background for neon to pop */
+    border: 2px solid #0f0; /* Neon green border */
     border-radius: 8px;
     padding: 10px;
     margin: 20px;
     text-align: center;
     font-size: 1.5em;
-    color: #228B22; /* Forest Green */
+    color: #0f0; /* Neon green text */
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
     position: sticky; /* Make the position sticky */
     top: 0; /* Stick to the top */
     z-index: 1000; /* Ensure it's above other content */
+}
+  nav a {
+    color: #0f0; /* Neon green for 'Home' */
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
   }
+  
+  nav a:nth-child(2) {
+    color: #00f; /* Neon blue for 'Managers' */
+    text-shadow: 0 0 5px #00f, 0 0 10px #00f; /* Neon glow */
+  }
+  

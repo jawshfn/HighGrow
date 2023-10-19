@@ -1,6 +1,6 @@
 /* src/styles/ProgressBar.css */
 .progress-bar {
-    background-color: #DCDCDC; /* Gainsboro */
+    background-color: rgb(212, 50, 182); 
     border-radius: 12px; /* Added for rounded corners */
     height: 20px;
     overflow: hidden;
@@ -9,7 +9,7 @@
 }
 
 .progress {
-    background-color: #6B8E23; /* Olive Drab */
+    background-color: rgb(0, 255, 0); /* Neon green progress bar */
     height: 100%;
     transition: width 0.5s ease-in-out;
     border-radius: 12px; /* Added for rounded corners */
