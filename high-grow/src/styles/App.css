@@ -1,19 +1,30 @@
 /* src/styles/App.css */
-.app {
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+html, body, #root, .app {
   background-color: #141032; /* Dark background */
   color: #fff; /* White text */
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
+  display: flex;
   background-color: #111; /* Dark background for neon to pop */
   padding: 10px;
   margin-bottom: 20px;
   border-bottom: 2px solid #0f0; /* Neon green border */
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 nav a {
-   margin: 0 15px;
+  margin: 0 15px;
   text-decoration: none;
   color: #0f0; /* Neon green text */
   font-weight: bold;

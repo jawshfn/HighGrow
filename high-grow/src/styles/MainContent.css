@@ -1,5 +1,8 @@
 h1 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    color: #0f0;
 }
 .currency-container {
     background-color: #111; /* Dark background for neon to pop */

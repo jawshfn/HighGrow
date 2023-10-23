@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hireManager } from '../redux/gameSlice';
 import '../styles/ManagerPage.css'; // Importing CSS
 import { formatNumber } from '../util/formatNumber';
+import '../styles/ManagerPage.css';
 
 function ManagerPage({ onHire }) {
   const dispatch = useDispatch();
@@ -17,12 +18,13 @@ function ManagerPage({ onHire }) {
 
   return (
     <div className="manager-page">
+      <h1>High Grow</h1>
       <nav>
         <Link to="/game">Home</Link> {/* Updated Link */}
         <Link to="/managers">Managers</Link>
       </nav>
       <div className="currency-container">
-        <h2>Currency: {formatNumber(currency)}</h2>
+        <h2>${formatNumber(currency)}</h2>
       </div>
       <h1>Managers</h1>
       <div className="managers-container">
