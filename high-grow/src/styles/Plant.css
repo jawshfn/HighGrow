@@ -7,11 +7,13 @@
   margin: 10px;
   text-align: center;
   box-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
+  width: 18em;
 }
-
-
 /* Plant Info */
-.plant h3, .plant p {
+h3 {
+  color: rgb(255, 255, 255);
+}
+.plant, .plant p {
   font-family: 'Roboto', sans-serif;
   color: #0f0; /* Neon green text */
   text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
@@ -69,22 +71,30 @@
 }
 .harvest-button:enabled {
   border: 2px solid #0f0; /* Neon green border */
-  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
-  background-color: #007bff;
+  background-color: rgb(0, 255, 110);
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0);
 }
-.upgrade-button:enabled {
 
+.upgrade-button:enabled {
     border: 2px solid #0f0; /* Neon green border */
     text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
     background-color: #007bff;
   
 }
+.harvest-button:hover {
+  background-color: #556B2F; /* Dark Olive Green */
+}
+.upgrade-button:hover {
+  background-color: #00356d;
+}
 .harvest-button:disabled,
 .upgrade-button:disabled {
   background-color: #7c0303; /* Dark background for neon to pop */
-  color: #f00; /* Neon red text */
+  color: rgb(255, 255, 255); /* Neon red text */
   border: 2px solid #f00; /* Neon red border */
   cursor: not-allowed;
   text-shadow: 0 0 5px #f00, 0 0 10px #f00; /* Neon red glow */
+  
 }
 

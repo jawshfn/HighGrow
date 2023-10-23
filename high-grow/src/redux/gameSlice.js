@@ -24,7 +24,7 @@ const gameSlice = createSlice({
     upgrades: [
       {  id: 1, name: 'Upgrade for OG KUSH', cost: 50, effect: 'increaseYield', value: 20, plantId: 1 },
       // Each subsequent upgrade has a 50% increase in cost
-      ...Array(9).fill().map((_, index) => ({
+      ...Array(25).fill().map((_, index) => ({
         id: index + 2,
         name: `Upgrade for Plant ${index + 2}`,
         cost: 50 * (1.5 ** index),

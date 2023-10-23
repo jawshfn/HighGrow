@@ -1,6 +1,6 @@
 /* src/styles/ProgressBar.css */
 .progress-bar {
-    background-color: rgb(212, 50, 182); 
+    background-color: rgb(255, 0, 208); 
     border-radius: 12px; /* Added for rounded corners */
     height: 20px;
     overflow: hidden;
