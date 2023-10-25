@@ -18,7 +18,7 @@ const gameSlice = createSlice({
         progress: 0,
         lastUpdated: Date.now(),
         level: 0,
-        harvestValue: 10 * (1.5 ** index)
+        harvestValue: Math.floor(10 * (1.5 ** index))
       }));
     })(),
     upgrades: [
@@ -27,7 +27,7 @@ const gameSlice = createSlice({
       ...Array(25).fill().map((_, index) => ({
         id: index + 2,
         name: `Upgrade for Plant ${index + 2}`,
-        cost: 50 * (1.5 ** index),
+        cost: Math.ceil(50 * (1.5 ** index)),
         effect: 'increaseYield',
         value: 20,
         plantId: index + 2

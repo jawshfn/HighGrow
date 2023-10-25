@@ -16,7 +16,7 @@ h3 {
 .plant, .plant p {
   font-family: 'Roboto', sans-serif;
   color: #0f0; /* Neon green text */
-  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
+  text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px #0f0; /* Neon glow */
   margin: 8px 0;
 
 }

@@ -6,7 +6,7 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: #eafbea; /* Light Green */
+  background-color: #141032; /* Light Green */
   color: #0f0; /* Neon green text */
   text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
   text-decoration: none; /* Remove underline from Link */
@@ -14,11 +14,12 @@
 }
 
 .start-button {
-  background-color: #6B8E23; /* Olive Drab */
+  background-color: #0f0; /* Olive Drab */
   color: #fff;
   padding: 10px 20px;
   border-radius: 4px;
   margin-top: 20px;
+  text-shadow: 0 0 5px #000000, 0 0 10px #0f0;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
