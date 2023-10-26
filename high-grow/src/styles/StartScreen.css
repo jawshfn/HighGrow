@@ -1,5 +1,9 @@
 /* src/styles/StartScreen.css */
 .start-screen {
+  background-image: url('https://github.com/jawshfn/HighGrow/blob/main/high-grow/public/images/neon-city5.png'); /* Replace 'your_image_filename.jpg' with your actual filename */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,3 +31,25 @@
 .start-button:hover {
   background-color: #556B2F; /* Dark Olive Green */
 }
+
+.start-screen h1{
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #00ffff; /* Neon teal */
+  text-shadow: 0 0 10px #ff0077; /* Subtle pink glow */
+  padding: 10px 20px; /* Space around the text */
+  background: rgba(17, 17, 17, 0.7); /* Semi-transparent dark background */
+  border-radius: 10px; /* Rounded corners for the background */
+  box-shadow: 0 0 20px #ff0077; /* Outer glow for the background */
+    animation: pulse 1s infinite alternate; /* Pulsing effect */
+}
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1.05);
+  }
+}
+
+

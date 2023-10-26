@@ -18,10 +18,11 @@ function StartScreen() {
 
   return (
     <div onClick={handleStartClick} className="start-screen">
-      <h1>High Grow</h1>
-      <div className="start-button">Tap to Start</div>
+      <title>Neon City</title>
+     <h1>Tap to Start</h1> 
+      
     </div>
-  );
+);
 }
 
 export default StartScreen;

@@ -1,15 +1,14 @@
 /* src/styles/ProgressBar.css */
 .progress-bar {
-    background-color: rgb(255, 0, 208); 
-    border-radius: 12px; /* Added for rounded corners */
+    background-color: rgb(121, 0, 101); 
     height: 20px;
     overflow: hidden;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2); /* Added for shadow effect */
+    box-shadow: 0px 0px 5px 0px rgb(121, 0, 101,0.2); /* Added for shadow effect */
     position: relative; /* Added for positioning the label */
 }
 
 .progress {
-    background-color: rgb(0, 255, 0); /* Neon green progress bar */
+    background-color: rgb(255, 0, 213); /* Neon green progress bar */
     height: 100%;
     transition: width 0.5s ease-in-out;
     border-radius: 12px; /* Added for rounded corners */
@@ -19,7 +18,7 @@
     position: absolute; /* Added for absolute positioning */
     width: 100%;
     text-align: center;
-    color: #FFFFFF; /* White */
+    color: #00ff09; /* White */
     font-weight: bold; /* Bold font */
     line-height: 20px; /* Align vertically */
 }

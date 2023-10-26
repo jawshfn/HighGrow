@@ -18,7 +18,7 @@ function ManagerPage({ onHire }) {
 
   return (
     <div className="manager-page">
-      <h1>High Grow</h1>
+      <h1>Neon City</h1>
       <nav>
         <Link to="/game">Home</Link> {/* Updated Link */}
         <Link to="/managers">Managers</Link>

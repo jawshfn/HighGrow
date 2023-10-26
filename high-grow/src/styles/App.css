@@ -5,13 +5,22 @@
   border: 0;
   box-sizing: border-box;
 }
+body {
+  background: radial-gradient(circle at 50% 50%, #00999944, #111);
+  background-color: #111; /* Retain the dark background */
+  background-attachment: fixed; /* Ensures background stays fixed during scrolling */
+}
+body > #root > div {
+  height: 100vh;
+}
 html, body, #root, .app {
-  background-color: #141032; /* Dark background */
   color: #fff; /* White text */
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  
 }
+
 
 nav {
   display: flex;
