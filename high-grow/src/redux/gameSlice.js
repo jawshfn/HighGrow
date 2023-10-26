@@ -23,7 +23,7 @@ const gameSlice = createSlice({
       }));
     })(),
     upgrades: [
-      {  id: 1, name: 'Upgrade for OG KUSH', cost: 50, effect: 'increaseYield', value: 20, buildingId: 1 },
+      {  id: 1, name: 'Upgrade for Neon Kiosk', cost: 50, effect: 'increaseYield', value: 20, buildingId: 1 },
       // Each subsequent upgrade has a 50% increase in cost
       ...Array(25).fill().map((_, index) => ({
         id: index + 2,

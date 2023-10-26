@@ -1,13 +1,18 @@
 
 .manager-page {
-  background-color: #141032; /* Dark background to match main screen */
+  background: radial-gradient(circle at 50% 50%, #00999944, #111);
+  background-color: #111; /* Retain the dark background */
+  background-attachment: fixed; /* Ensures background stays fixed during scrolling */
   color: #0f0; /* Neon green text */
   text-align: center;
   padding: 0;
   margin: 0;
   height: 100%;
 }
-
+.manager-page h1{
+  color: rgb(0, 242, 255); /* Neon blue for 'Managers' */
+    text-shadow: 0 0 5px rgb(0, 242, 255), 0 0 10px rgb(0, 242, 255); /* Neon glow */
+}
 nav {
   background-color: #111; /* Dark background for neon to pop */
   padding: 10px;
@@ -34,13 +39,14 @@ nav a {
 .manager-container {
   background-color: #111; /* Dark background */
   color: #0f0; /* Neon green text */
-  border: 2px solid #0f0; /* Neon green border */
+  text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px #0f0; /* Neon glow */
+  border: 2px solid rgb(0, 242, 255);
+  box-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
   width: 200px;
   text-align: center;
-  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
 }
 
 button {

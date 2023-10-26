@@ -5,8 +5,11 @@
   border: 0;
   box-sizing: border-box;
 }
+h1{
+  margin: 7.5px;
+}
 body {
-  background: radial-gradient(circle at 50% 50%, #00999944, #111);
+  background: radial-gradient(circle at 50% 50%, #03990044, #111);
   background-color: #111; /* Retain the dark background */
   background-attachment: fixed; /* Ensures background stays fixed during scrolling */
 }
