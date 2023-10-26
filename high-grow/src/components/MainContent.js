@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { useSelector } from 'react-redux';
-import Plant from './Plant';
+import Building from './Building';
 import CurrencyDisplay from './CurrencyDisplay';
 import {formatNumber} from '../util/formatNumber';
 import '../styles/MainContent.css'; // Importing CSS
@@ -10,12 +10,12 @@ import '../styles/MainContent.css'; // Importing CSS
 
 function MainApp() {
 
-  const { currency, plants, upgrades } = useSelector((state) => state.game);
+  const { currency, buildings, upgrades } = useSelector((state) => state.game);
   const location = useLocation(); // Get the current location
 
   return (
     <div>
-      <h1>High Grow</h1>
+      <h1>Neon City</h1>
       {location.pathname !== '/' && (
         <nav>
         <Link to="/game">Home</Link> {/* Updated Link */}
@@ -28,9 +28,9 @@ function MainApp() {
       )}
       </div>
       <div className="game-container">
-        {plants.map((plant) => (
-          <div className="plant-container" key={plant.id}>
-            <Plant {...plant} baseHarvestValue={plant.harvestValue}upgrades={upgrades.filter(upgrade => upgrade.plantId === plant.id)} />
+        {buildings.map((building) => (
+          <div className="building-container" key={building.id}>
+            <Building {...building} baseHarvestValue={building.harvestValue}upgrades={upgrades.filter(upgrade => upgrade.buildingId === building.id)} />
           </div>
         ))}
       </div>

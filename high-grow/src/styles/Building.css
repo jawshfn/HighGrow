@@ -1,5 +1,5 @@
 /* src/styles/Plant.css */
-.plant {
+.building {
   background-color: #111; /* Dark background for neon to pop */
   border: 2px solid #0f0; /* Neon green border */
   border-radius: 8px;
@@ -13,12 +13,20 @@
 h3 {
   color: rgb(255, 255, 255);
 }
-.plant, .plant p {
+.building, .building p {
   font-family: 'Roboto', sans-serif;
   color: #0f0; /* Neon green text */
   text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 10px #0f0; /* Neon glow */
   margin: 8px 0;
 
+}
+.building-image {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px; /* To add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: To add a subtle shadow */
 }
 /* Progress Bar */
 .progress-container {
@@ -69,7 +77,7 @@ h3 {
 .button:hover {
   background-color: #000080; /* Darker blue on hover */
 }
-.harvest-button:enabled {
+.collect-button:enabled {
   border: 2px solid #0f0; /* Neon green border */
   background-color: rgb(0, 255, 110);
   color: rgb(255, 255, 255);
@@ -82,13 +90,13 @@ h3 {
     background-color: #007bff;
   
 }
-.harvest-button:hover {
+.collect-button:hover {
   background-color: #556B2F; /* Dark Olive Green */
 }
 .upgrade-button:hover {
   background-color: #00356d;
 }
-.harvest-button:disabled,
+.collect-button:disabled,
 .upgrade-button:disabled {
   background-color: #7c0303; /* Dark background for neon to pop */
   color: rgb(255, 255, 255); /* Neon red text */

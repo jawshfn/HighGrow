@@ -2,9 +2,30 @@
 export const LEVEL_MULTIPLIER = 0.1;
 export const UPGRADE_COST_MULTIPLIER = 1.1;
 export const MILESTONE_LEVELS = [25, 50, 100];
-export const plantNames = [
-  'OG Kush', 'Sour Diesel', 'Blue Dream', 'Granddaddy Purple', 'Green Crack', 'Girl Scout Cookies', 
-  'Jack Herer', 'Durban Poison', 'Northern Lights', 'White Widow', 'Pineapple Express', 'Purple Haze', 
-  'Trainwreck', 'Bubba Kush', 'Super Silver Haze', 'Maui Wowie', 'Cherry Pie', 'Blackberry Kush', 
-  'Strawberry Cough', 'Gelato', 'Lemon Haze', 'Tahoe OG', 'Super Lemon Haze', 'G13', 'Acapulco Gold'
-  ];
+export const buildingNames = [
+  "Neon Kiosk",
+"Neon Cafe",
+"Neon Arcade",
+"Neon Diner",
+"Glowing Laundromat",
+"Neon Boutique",
+"Luminous Bookstore",
+"Neon Theater",
+"Glowing Art Gallery",
+"Neon Tech Hub",
+"Luminous Hotel",
+"Neon Skating Rink",
+"Glowing Gym",
+"Neon Marketplace",
+"Luminous Condominium",
+"Neon Music Club",
+"Glowing Aquarium",
+"Neon Corporate Tower",
+"Luminous Park",
+"Neon Harbor",
+"Luminous Hospital",
+"Neon University",
+"Glowing Stadium",
+"Neon Transport Hub",
+"Neon Tower"
+];

@@ -1,52 +1,53 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
-import { plantNames } from '../constants';
+import { buildingNames } from '../constants';
 
-
+const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png'];
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
     currency: 100000,
-    plants: (() => {
+    buildings: (() => {
 
-      // Return the plants array with specific names
-      return plantNames.map((name, index) => ({
+      // Return the buildings array with specific names
+      return buildingNames.map((name, index) => ({
         id: index + 1,
         name: name,
         growthTime: 5000 * (1.25 ** index),
         progress: 0,
         lastUpdated: Date.now(),
         level: 0,
+        photo: buildingImages[index],
         harvestValue: Math.floor(10 * (1.5 ** index))
       }));
     })(),
     upgrades: [
-      {  id: 1, name: 'Upgrade for OG KUSH', cost: 50, effect: 'increaseYield', value: 20, plantId: 1 },
+      {  id: 1, name: 'Upgrade for OG KUSH', cost: 50, effect: 'increaseYield', value: 20, buildingId: 1 },
       // Each subsequent upgrade has a 50% increase in cost
       ...Array(25).fill().map((_, index) => ({
         id: index + 2,
-        name: `Upgrade for Plant ${index + 2}`,
+        name: `Upgrade for Building ${index + 2}`,
         cost: Math.ceil(50 * (1.5 ** index)),
         effect: 'increaseYield',
         value: 20,
-        plantId: index + 2
+        buildingId: index + 2
       }))
     ],
     managers: [
-      { id: 1, name: 'Bud Buddy', cost: 100, effect: 'autoHarvest', plantId: 1 }
+      { id: 1, name: 'Bud Buddy', cost: 100, effect: 'autoHarvest', buildingId: 1 }
     ]
   },
   reducers: {
     harvest: (state, action) => {
-      const plantId = action.payload;
-      const plant = state.plants.find(p => p.id === plantId);
-      if (plant) {
-        const plantHarvestValue = calculateHarvestValue(plant.harvestValue, plant.level);
-        state.currency += plantHarvestValue;
+      const buildingId = action.payload;
+      const building = state.buildings.find(p => p.id === buildingId);
+      if (building) {
+        const buildingHarvestValue = calculateHarvestValue(building.harvestValue, building.level);
+        state.currency += buildingHarvestValue;
         state.currency = Math.floor(state.currency);
-        plant.progress = 0;
-        plant.lastUpdated = Date.now();
+        building.progress = 0;
+        building.lastUpdated = Date.now();
       }
     },
     purchaseUpgrade: (state, action) => {
@@ -56,18 +57,18 @@ const gameSlice = createSlice({
         state.currency = Math.floor(state.currency);
        
         if (upgrade.effect === 'increaseYield') {
-          const plant = state.plants.find((p) => p.id === upgrade.plantId);
-          if (plant) {
+          const building = state.buildings.find((p) => p.id === upgrade.buildingId);
+          if (building) {
             
-            plant.level++;
-            plant.harvestValue = calculateHarvestValue(plant.harvestValue, plant.level);
+            building.level++;
+            building.harvestValue = calculateHarvestValue(building.harvestValue, building.level);
             
             
 
 
             
           }
-          upgrade.cost = calculateUpgradeCost(upgrade.cost, plant.level); // Use helper function
+          upgrade.cost = calculateUpgradeCost(upgrade.cost, building.level); // Use helper function
         }
         
         
@@ -78,18 +79,18 @@ const gameSlice = createSlice({
       if (state.currency >= manager.cost) {
         state.currency -= manager.cost;
         state.currency = Math.floor(state.currency);
-        const plant = state.plants.find((p) => p.id === manager.plantId);
-        plant.autoHarvest = true;
+        const building = state.buildings.find((p) => p.id === manager.buildingId);
+        building.autoHarvest = true;
       }
     },
     updateProgress: (state) => {
         // Calculating progress based on elapsed time since last updated
         const currentTime = Date.now();
-        state.plants.forEach(plant => {
-          if(plant && plant.level > 0) {
-          const elapsed = currentTime - plant.lastUpdated;
-          plant.progress = Math.min(plant.progress + elapsed, plant.growthTime);
-          plant.lastUpdated = currentTime;
+        state.buildings.forEach(building => {
+          if(building && building.level > 0) {
+          const elapsed = currentTime - building.lastUpdated;
+          building.progress = Math.min(building.progress + elapsed, building.growthTime);
+          building.lastUpdated = currentTime;
           }
         });
       },

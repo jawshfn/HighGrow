@@ -1,14 +1,14 @@
-// src/components/Plant.js
+// src/components/Building.js
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { harvest, updateProgress, purchaseUpgrade } from '../redux/gameSlice';
-import '../styles/Plant.css'; // Updated import statement
-import ProgressBar from '../components/ProgressBar';
+import '../styles/Building.css'; // Updated import statement
+import ProgressBar from './ProgressBar';
 import {calculateHarvestValue} from '../helpers';
 import { formatNumber } from '../util/formatNumber';
 import Upgrade from './Upgrade';
 
-function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue, upgrades }) {
+function Building({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue, upgrades, photo }) {
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -24,11 +24,13 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
   const cps = harvestValue && growthTime ? ((harvestValue / growthTime) * 1000).toFixed(2) : 0; // added check here
   const canHarvest = progress >= growthTime;
   return (
-    <div className="plant">
+    <div className="building">
       <h3>{name}</h3>
+      <img src={`/images/${photo}`} alt={name} className="building-image" />
+
       <p>Level: {level}</p>
-      <p>Growth Time: {growthTime ? (growthTime / 1000).toFixed(2) : 0} s</p> {/* added check here */}
-      <p>Currency per Second: {cps}</p>
+      <p>Development Time: {growthTime ? (growthTime / 1000).toFixed(2) : 0} s</p> {/* added check here */}
+      <p>Currency per Second: ${cps}</p>
       <div className="progress-container">
       <div className="progress-label">
           {progressPercentage.toFixed(2)}% {/* Render progress percentage */}
@@ -38,11 +40,11 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
       
       <div className="buttons-container">
       <button 
-          className="harvest-button" 
+          className="collect-button" 
           onClick={() => dispatch(harvest(id))} 
           disabled={!canHarvest} // Disable the button if the plant cannot be harvested
         >
-          Harvest {formatNumber(harvestValue)}
+          Collect {formatNumber(harvestValue)}
         </button>
         {upgrades.map((upgrade) => (
           <Upgrade key={upgrade.id} {...upgrade} onPurchase={() => dispatch(purchaseUpgrade(upgrade.id))} />
@@ -52,4 +54,4 @@ function Plant({ id, name, growthTime, progress, lastUpdated, level, baseHarvest
   );
 }
 
-export default Plant;
+export default Building;

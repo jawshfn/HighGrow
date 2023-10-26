@@ -45,7 +45,7 @@ nav a:hover {
 }
 
 
-.plant-container,
+.building-container,
 .actions-container {
   display: flex; /* Aligns children (Plant and Upgrade components) in a row */
   justify-content: space-between; /* Maximizes the space between Plant and Upgrade components */

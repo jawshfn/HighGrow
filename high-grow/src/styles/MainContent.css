@@ -3,6 +3,7 @@ h1 {
     display: flex;
     justify-content: center;
     color: #0f0;
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
 }
 .currency-container {
     background-color: #111; /* Dark background for neon to pop */
