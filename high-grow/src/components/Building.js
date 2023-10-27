@@ -8,7 +8,7 @@ import {calculateHarvestValue} from '../helpers';
 import { formatNumber } from '../util/formatNumber';
 import Upgrade from './Upgrade';
 
-function Building({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue, upgrades, photo }) {
+function Building({ id, name, growthTime, progress, lastUpdated, level, baseHarvestValue, upgrades, photo, hasManager }) {
   const dispatch = useDispatch();
   
   useEffect(() => {

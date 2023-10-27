@@ -1,9 +1,10 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
-import { buildingNames } from '../constants';
+import { buildingNames, managerNames } from '../constants';
 
 const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png'];
+
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
@@ -19,7 +20,8 @@ const gameSlice = createSlice({
         lastUpdated: Date.now(),
         level: 0,
         photo: buildingImages[index],
-        harvestValue: Math.floor(10 * (1.5 ** index))
+        harvestValue: Math.floor(10 * (1.5 ** index)),
+        hasManager: false,
       }));
     })(),
     upgrades: [
@@ -34,9 +36,15 @@ const gameSlice = createSlice({
         buildingId: index + 2
       }))
     ],
-    managers: [
-      { id: 1, name: 'Bud Buddy', cost: 100, effect: 'autoHarvest', buildingId: 1 }
-    ]
+    managers: (() => {
+    return buildingNames.map((name, index) => ({
+      id: index + 1,
+      name: managerNames[index],
+      isHired: false,
+      buildingId: index + 1,
+      cost: (index + 1) * 100,
+    }));
+  })()
   },
   reducers: {
     harvest: (state, action) => {
@@ -76,13 +84,25 @@ const gameSlice = createSlice({
     },
     hireManager: (state, action) => {
       const manager = state.managers.find((m) => m.id === action.payload);
-      if (state.currency >= manager.cost) {
+    
+    // Ensure the manager exists, is not already hired, and the player has enough currency
+      if(state.currency >= manager.cost) {
+        
+      }
+      if (!manager.isHired && state.currency >= manager.cost) {
         state.currency -= manager.cost;
         state.currency = Math.floor(state.currency);
+        manager.isHired = true;
+        
+        // Mark the manager as hired
+        manager.isHired = true;
+
+        // Optionally: Mark the associated building as having a hired manager
         const building = state.buildings.find((p) => p.id === manager.buildingId);
-        building.autoHarvest = true;
-      }
-    },
+        if (building) {
+            building.hasManager = true;
+        }
+    }},
     updateProgress: (state) => {
         // Calculating progress based on elapsed time since last updated
         const currentTime = Date.now();
@@ -92,6 +112,16 @@ const gameSlice = createSlice({
           building.progress = Math.min(building.progress + elapsed, building.growthTime);
           building.lastUpdated = currentTime;
           }
+          if (building.progress >= building.growthTime) {
+            const manager = state.managers.find(m => m.buildingId === building.id);
+            if (manager && manager.isHired) {
+                const buildingHarvestValue = calculateHarvestValue(building.harvestValue, building.level);
+                state.currency += buildingHarvestValue;
+                state.currency = Math.floor(state.currency);
+                building.progress = 0;
+                building.lastUpdated = currentTime;
+            }
+        }
         });
       },
   }

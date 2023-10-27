@@ -16,7 +16,8 @@ function ManagerPage({ onHire }) {
     if (onHire) onHire(managerId);
   };
 
-  return (
+return (
+  <div>
     <div className="manager-page">
       <h1>Neon City</h1>
       <nav>
@@ -30,12 +31,19 @@ function ManagerPage({ onHire }) {
       <div className="managers-container">
         {managers.map((manager) => (
           <div className="manager-container" key={manager.id}>
-            <p>{manager.name}</p>
-            <p>Cost: {manager.cost}</p>
-            <button onClick={() => handleHire(manager.id)} className="hire-button">Hire</button>
-          </div>
+    <p className="manager-name">{manager.name}</p>
+    <button 
+        onClick={() => handleHire(manager.id)} 
+        className="hire-button"
+        disabled={manager.isHired}
+    >
+        {manager.isHired ? "Already Hired" : "Hire"}
+    </button>
+    <p className="manager-cost">Cost: {manager.cost}</p>
+</div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

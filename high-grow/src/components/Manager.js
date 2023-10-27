@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles/Manager.css'; // Importing CSS
 
-function Manager({ name, cost, onHire }) {
+function Manager({ id, name, cost, onHire, buildingId }) {
   return (
     <div className="manager">
       <h4>{name}</h4>
