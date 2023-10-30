@@ -5,6 +5,8 @@ import ManagerPage from './components/ManagerPage';
 import MainContent from './components/MainContent'; // MainContent component
 import StartScreen from './components/StartScreen'; // Updated import
 import './styles/App.css';
+import AchievementsPage from './components/AchievementsPage';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/managers" element={<ManagerPage />} />
           <Route path="/game" element={<MainContent />} /> {/* MainContent component */}
+          <Route path="/achievements" element={<AchievementsPage /> } />
           <Route path="/" element={<StartScreen />} /> {/* Updated Route */}
         </Routes>
       </div>

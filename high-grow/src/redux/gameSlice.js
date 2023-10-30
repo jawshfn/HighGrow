@@ -6,11 +6,30 @@ import { buildingNames, managerNames } from '../constants';
 const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'laundromat.png', 'boutique.png',
  'bookstore.png', 'theater.png', 'art-gallery.png', 'tech-hub.png', 'hotel.png', 'skating-rink.png',
   'gym.png', 'marketplace.png', 'condominium.png', 'music-club.png', 'aquarium.png'];
-
+  const achievements = [
+    {
+      id: 1,
+      name: "First Purchase",
+      description: "Buy your first building.",
+      condition: (state) => state.buildings.some(building => building.count > 0),
+      reward: { type: "currency", amount: 100 },
+      isAchieved: false
+    },
+    {
+      id: 2,
+      name: "Entrepreneur",
+      description: "Own one of every building.",
+      condition: (state) => state.buildings.every(building => building.count > 0),
+      reward: { type: "currency", amount: 500 },
+      isAchieved: false
+    },
+    // ... (you can add more achievements here)
+  ];
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
     currency: 100000,
+    achievements: achievements,
     buildings: (() => {
 
       // Return the buildings array with specific names
@@ -58,6 +77,25 @@ const gameSlice = createSlice({
         state.currency = Math.floor(state.currency);
         building.progress = 0;
         building.lastUpdated = Date.now();
+      }
+    },
+    buyBuilding: (state, action) => {
+      const building = state.buildings.find(b => b.id === action.payload);
+      if (building && state.currency >= building.cost) {
+        building.count += 1;
+        state.currency -= building.cost;
+        
+        // Check achievements after buying a building
+        state.achievements.forEach(achievement => {
+          if (!achievement.isAchieved && achievement.condition(state)) {
+            achievement.isAchieved = true;
+            // You can also add the reward logic here or keep it separate
+            if (achievement.reward.type === "currency") {
+              state.currency += achievement.reward.amount;
+            }
+            // ... handle other reward types
+          }
+        });
       }
     },
     purchaseUpgrade: (state, action) => {

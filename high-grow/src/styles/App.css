@@ -16,7 +16,7 @@ body {
 body > #root > div {
   height: 100vh;
 }
-html, body, #root, .app {
+html, body, #root, .App {
   color: #fff; /* White text */
   font-family: 'Arial', sans-serif;
   margin: 0;

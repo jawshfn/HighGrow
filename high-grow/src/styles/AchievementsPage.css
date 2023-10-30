@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+.achievement-page h1 {
+    color: rgb(247, 0, 255);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 5px rgb(247, 0, 255), 0 0 10px rgb(247, 0, 255); /* Neon glow */
+}
+
+.achievement-page {
+    background: radial-gradient(circle at 50% 50%, #99008a44, #111);
+    background-color: #111; /* Retain the dark background */
+    background-attachment: fixed; /* Ensures background stays fixed during scrolling */
+    color: rgb(247, 0, 255); /* Neon green text */
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    
+  }
+.achievements-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    color: rgb(247, 0, 255);
+    height: 100%;
+}
+
+.achievement {
+    width: 80%;
+    border: 2px solid #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+button[disabled] {
+    background-color: #aaa;
+    cursor: not-allowed;
+}

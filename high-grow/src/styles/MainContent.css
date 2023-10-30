@@ -26,6 +26,10 @@ h1 {
   }
   
   nav a:nth-child(2) {
+    color: rgb(247, 0, 255);
+    text-shadow: 0 0 5px rgb(247, 0, 255), 0 0 10px rgb(247, 0, 255); /* Neon glow */
+  }
+  nav a:nth-child(3) {
     color: rgb(0, 242, 255); /* Neon blue for 'Managers' */
     text-shadow: 0 0 5px rgb(0, 242, 255), 0 0 10px rgb(0, 242, 255); /* Neon glow */
   }

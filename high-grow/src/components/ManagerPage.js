@@ -22,7 +22,9 @@ return (
       <h1>Neon City</h1>
       <nav>
         <Link to="/game">Home</Link> {/* Updated Link */}
+        <Link to="/achievements">Achievements</Link>
         <Link to="/managers">Managers</Link>
+        
       </nav>
       <div className="currency-container">
         <h2>${formatNumber(currency)}</h2>
