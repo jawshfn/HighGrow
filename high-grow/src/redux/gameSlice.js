@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
 import { buildingNames, managerNames } from '../constants';
 
-const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png'];
+const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'laundromat.png', 'boutique.png',
+ 'bookstore.png', 'theater.png', 'art-gallery.png', 'tech-hub.png', 'hotel.png', 'skating-rink.png',
+  'gym.png', 'marketplace.png', 'condominium.png', 'music-club.png', 'aquarium.png'];
 
 const gameSlice = createSlice({
   name: 'game',
