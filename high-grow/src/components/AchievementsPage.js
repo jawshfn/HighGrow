@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import '../styles/AchievementsPage.css'; // Assuming you'll have a corresponding CSS file
 import { Link, useLocation } from 'react-router-dom';
 import CurrencyDisplay from './CurrencyDisplay';
@@ -8,7 +8,7 @@ import {formatNumber} from '../util/formatNumber';
 const AchievementsPage = () => {
     const { currency } = useSelector((state) => state.game);
     const achievements = useSelector(state => state.game.achievements);
-    const dispatch = useDispatch();
+   
     const location = useLocation(); // Get the current location
 
     return (
@@ -31,6 +31,7 @@ const AchievementsPage = () => {
                 <div className="achievement" key={achievement.id}>
                     <h3>{achievement.name}</h3>
                     <p>{achievement.description}</p>
+                    <p>$ {achievement.reward.amount}</p>
                     {achievement.isAchieved ? (
                         <button disabled>Claimed</button>
                     ) : (

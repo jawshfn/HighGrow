@@ -1,7 +1,7 @@
 // src/components/Building.js
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { harvest, updateProgress, purchaseUpgrade } from '../redux/gameSlice';
+import { harvest, updateProgress, purchaseUpgrade, buyBuilding } from '../redux/gameSlice';
 import '../styles/Building.css'; // Updated import statement
 import ProgressBar from './ProgressBar';
 import {calculateHarvestValue} from '../helpers';

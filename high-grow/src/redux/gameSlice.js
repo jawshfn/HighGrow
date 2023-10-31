@@ -12,7 +12,7 @@ const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'lau
       name: "First Purchase",
       description: "Buy your first building.",
       condition: (state) => state.buildings.some(building => building.count > 0),
-      reward: { type: "currency", amount: 100 },
+      reward: { type: "currency", amount: 1000 },
       isAchieved: false
     },
     {
@@ -28,7 +28,7 @@ const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'lau
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    currency: 100000,
+    currency: 100000000,
     achievements: achievements,
     buildings: (() => {
 
@@ -43,6 +43,7 @@ const gameSlice = createSlice({
         photo: buildingImages[index],
         harvestValue: Math.floor(10 * (1.5 ** index)),
         hasManager: false,
+        count: 0,
       }));
     })(),
     upgrades: [
@@ -79,13 +80,22 @@ const gameSlice = createSlice({
         building.lastUpdated = Date.now();
       }
     },
-    buyBuilding: (state, action) => {
-      const building = state.buildings.find(b => b.id === action.payload);
-      if (building && state.currency >= building.cost) {
-        building.count += 1;
-        state.currency -= building.cost;
+    purchaseUpgrade: (state, action) => {
+      const upgrade = state.upgrades.find((u) => u.id === action.payload);
+      if (state.currency >= upgrade.cost) {
+        state.currency -= upgrade.cost;
+        state.currency = Math.floor(state.currency);
         
-        // Check achievements after buying a building
+        if (upgrade.effect === 'increaseYield') {
+          const building = state.buildings.find((p) => p.id === upgrade.buildingId);
+          if (building) {
+            building.count +=1;
+            building.level++;
+            building.harvestValue = calculateHarvestValue(building.harvestValue, building.level);
+
+          }
+          upgrade.cost = calculateUpgradeCost(upgrade.cost, building.level); // Use helper function
+        }
         state.achievements.forEach(achievement => {
           if (!achievement.isAchieved && achievement.condition(state)) {
             achievement.isAchieved = true;
@@ -96,28 +106,6 @@ const gameSlice = createSlice({
             // ... handle other reward types
           }
         });
-      }
-    },
-    purchaseUpgrade: (state, action) => {
-      const upgrade = state.upgrades.find((u) => u.id === action.payload);
-      if (state.currency >= upgrade.cost) {
-        state.currency -= upgrade.cost;
-        state.currency = Math.floor(state.currency);
-       
-        if (upgrade.effect === 'increaseYield') {
-          const building = state.buildings.find((p) => p.id === upgrade.buildingId);
-          if (building) {
-            
-            building.level++;
-            building.harvestValue = calculateHarvestValue(building.harvestValue, building.level);
-            
-            
-
-
-            
-          }
-          upgrade.cost = calculateUpgradeCost(upgrade.cost, building.level); // Use helper function
-        }
         
         
       }
@@ -167,5 +155,5 @@ const gameSlice = createSlice({
   }
 });
 
-export const { harvest, purchaseUpgrade, hireManager, updateProgress } = gameSlice.actions;
+export const { harvest, purchaseUpgrade, hireManager, updateProgress, buyBuilding } = gameSlice.actions;
 export default gameSlice.reducer;
