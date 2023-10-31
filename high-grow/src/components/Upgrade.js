@@ -24,7 +24,7 @@ function Upgrade({ id, name, cost, effect, value }) {
         onClick={handlePurchase} 
         disabled={!canPurchase}
       >
-        Buy for {formatNumber(cost)}
+        +1 ${formatNumber(cost)}
         </button>
     </div>
   );

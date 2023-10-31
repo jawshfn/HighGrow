@@ -1,9 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-  }
+
 .achievement-page h1 {
     color: rgb(247, 0, 255);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,8 +15,7 @@
     text-align: center;
     padding: 0;
     margin: 0;
-    height: 100vh;
-    
+    height: 100%;
   }
 .achievements-container {
     display: flex;
@@ -31,6 +25,7 @@
     padding: 20px;
     color: rgb(247, 0, 255);
     height: 100%;
+    
 }
 
 .achievement {

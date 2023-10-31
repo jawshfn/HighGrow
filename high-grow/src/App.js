@@ -6,9 +6,18 @@ import MainContent from './components/MainContent'; // MainContent component
 import StartScreen from './components/StartScreen'; // Updated import
 import './styles/App.css';
 import AchievementsPage from './components/AchievementsPage';
+import { useDispatch } from 'react-redux';
+import { startGameProgression } from './redux/gameSlice';
+import { useEffect } from 'react';
+
 
 
 function App() {
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+        startGameProgression(dispatch);
+    }, [dispatch]);
   return (
     <Router>
       <div className="app">

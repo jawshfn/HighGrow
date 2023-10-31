@@ -7,11 +7,13 @@
   margin: 10px;
   text-align: center;
   box-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
-  width: 18em;
+  width: 23em;
 }
 /* Plant Info */
 h3 {
   color: rgb(255, 255, 255);
+  margin: 5px;
+  padding: 5px;
 }
 .building, .building p {
   font-family: 'Roboto', sans-serif;
@@ -59,23 +61,22 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  margin: px 0;
-  
+  margin: 0px 0;
 }
 
-.button {
-  background-color: #111; /* Dark background for neon to pop */
-  color: #00f; /* Neon blue text */
-  border: 2px solid #00f; /* Neon blue border */
-  border-radius: 8px;
-  padding: 12px 24px;
+.collect-button, 
+.upgrade-button {
+  width: 170px;  /* Adjust based on desired width */
+  height: 50px;  /* Adjust based on desired height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  /* This will hide any content that exceeds the button dimensions */
+  white-space: nowrap;  /* This will prevent the text from wrapping to the next line */
+  text-overflow: ellipsis;  /* This will add "..." if the text is too long for the button */
+  border-radius: px;
   cursor: pointer;
-  font-family: 'Luckiest Guy', cursive;
-  text-shadow: 0 0 5px #00f, 0 0 10px #00f; /* Neon blue glow */
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
-}
-.button:hover {
-  background-color: #000080; /* Darker blue on hover */
+  transition: background-color 0.3s;
 }
 .collect-button:enabled {
   border: 2px solid #0f0; /* Neon green border */
@@ -88,8 +89,9 @@ h3 {
     border: 2px solid #0f0; /* Neon green border */
     text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
     background-color: #007bff;
-  
+
 }
+
 .collect-button:hover {
   background-color: #556B2F; /* Dark Olive Green */
 }

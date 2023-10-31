@@ -55,3 +55,123 @@ export const managerNames = [ "Kara the Kiosk Keeper",
 "Transport Titan Tessa",
 "Tower Topper Toby"
 ];
+export const achievements = [
+  {
+    id: 1,
+    name: "First Purchase",
+    description: "Buy your first building.",
+    condition: (state) => state.buildings.some(building => building.count > 0),
+    reward: { type: "currency", amount: 100 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 2,
+    name: "Entrepreneur",
+    description: "Own one of every building.",
+    condition: (state) => state.buildings.every(building => building.count > 0),
+    reward: { type: "currency", amount: 500 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 'cityNovice',
+    name: 'City Novice',
+    description: 'Own at least one of every building type.',
+    condition: (state) => state.buildings.every(building => building.count >= 1),
+    reward: {
+        type: 'currency',
+        amount: 500
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'neonTycoon',
+    name: 'Neon Tycoon',
+    description: 'Earn a cumulative total of 10,000 currency.',
+    condition: (state) => state.currency >= 10000,
+    reward: {
+        type: 'currency',
+        amount: 1000
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'managerMagnate',
+    name: 'Manager Magnate',
+    description: 'Hire all managers.',
+    condition: (state) => state.managers.every(manager => manager.isHired),
+    reward: {
+        type: 'currency',
+        amount: 1500
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'cityOfLights',
+    name: 'City of Lights',
+    description: 'Reach level 10 for any building.',
+    condition: (state) => state.buildings.some(building => building.count >= 10),
+    reward: {
+        type: 'currency',
+        amount: 2000
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'neonConnoisseur',
+    name: 'Neon Connoisseur',
+    description: 'Spend a cumulative total of 5,000 currency on upgrades.',
+    // This condition assumes there's a totalSpent variable in the state.
+    condition: (state) => state.totalSpent >= 5000, 
+    reward: {
+        type: 'currency',
+        amount: 2500
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'cityLuminary',
+    name: 'City Luminary',
+    description: 'Reach a total city population of 100,000.',
+    // This condition assumes there's a population variable in the state.
+    condition: (state) => state.population >= 100000,
+    reward: {
+        type: 'currency',
+        amount: 3000
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'neonExpert',
+    name: 'Neon Expert',
+    description: 'Play the game for 7 consecutive days.',
+    // This condition assumes there's a consecutiveDaysLoggedIn variable in the state.
+    condition: (state) => state.consecutiveDaysLoggedIn >= 7,
+    reward: {
+        type: 'currency',
+        amount: 3500
+    },
+    isAchieved: false,
+    isClaimed: false
+},
+{
+    id: 'citysPride',
+    name: "City's Pride",
+    description: 'Own 50 of any single building type.',
+    condition: (state) => state.buildings.some(building => building.count >= 50),
+    reward: {
+        type: 'currency',
+        amount: 4000
+    },
+    isAchieved: false,
+    isClaimed: false
+}
+  // ... (you can add more achievements here)
+];

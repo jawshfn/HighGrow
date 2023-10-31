@@ -1,34 +1,22 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
-import { buildingNames, managerNames } from '../constants';
+import { buildingNames, managerNames, achievements } from '../constants';
+
+export function startGameProgression(dispatch) {
+  setInterval(() => {
+      dispatch(updateProgress());
+  }, 1000);  // Every second
+}
 
 const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'laundromat.png', 'boutique.png',
  'bookstore.png', 'theater.png', 'art-gallery.png', 'tech-hub.png', 'hotel.png', 'skating-rink.png',
   'gym.png', 'marketplace.png', 'condominium.png', 'music-club.png', 'aquarium.png'];
-  const achievements = [
-    {
-      id: 1,
-      name: "First Purchase",
-      description: "Buy your first building.",
-      condition: (state) => state.buildings.some(building => building.count > 0),
-      reward: { type: "currency", amount: 1000 },
-      isAchieved: false
-    },
-    {
-      id: 2,
-      name: "Entrepreneur",
-      description: "Own one of every building.",
-      condition: (state) => state.buildings.every(building => building.count > 0),
-      reward: { type: "currency", amount: 500 },
-      isAchieved: false
-    },
-    // ... (you can add more achievements here)
-  ];
+  
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    currency: 100000000,
+    currency: 100,
     achievements: achievements,
     buildings: (() => {
 
@@ -44,6 +32,7 @@ const gameSlice = createSlice({
         harvestValue: Math.floor(10 * (1.5 ** index)),
         hasManager: false,
         count: 0,
+        elapsedTime: 0,
       }));
     })(),
     upgrades: [
@@ -100,9 +89,6 @@ const gameSlice = createSlice({
           if (!achievement.isAchieved && achievement.condition(state)) {
             achievement.isAchieved = true;
             // You can also add the reward logic here or keep it separate
-            if (achievement.reward.type === "currency") {
-              state.currency += achievement.reward.amount;
-            }
             // ... handle other reward types
           }
         });
@@ -110,6 +96,16 @@ const gameSlice = createSlice({
         
       }
     },
+    claimAchievementReward: (state, action) => {
+      const achievement = state.achievements.find(a => a.id === action.payload);
+      if (achievement && achievement.isAchieved && !achievement.isClaimed) {
+          if (achievement.reward.type === "currency") {
+              state.currency += achievement.reward.amount;
+          }
+          // ... handle other reward types
+          achievement.isClaimed = true;
+      }
+  },
     hireManager: (state, action) => {
       const manager = state.managers.find((m) => m.id === action.payload);
     
@@ -121,9 +117,7 @@ const gameSlice = createSlice({
         state.currency -= manager.cost;
         state.currency = Math.floor(state.currency);
         manager.isHired = true;
-        
-        // Mark the manager as hired
-        manager.isHired = true;
+
 
         // Optionally: Mark the associated building as having a hired manager
         const building = state.buildings.find((p) => p.id === manager.buildingId);
@@ -152,8 +146,9 @@ const gameSlice = createSlice({
         }
         });
       },
+
   }
 });
 
-export const { harvest, purchaseUpgrade, hireManager, updateProgress, buyBuilding } = gameSlice.actions;
+export const { harvest, purchaseUpgrade, hireManager, updateProgress, claimAchievementReward, progressTime } = gameSlice.actions;
 export default gameSlice.reducer;

@@ -1,7 +1,7 @@
 // src/components/Building.js
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { harvest, updateProgress, purchaseUpgrade, buyBuilding } from '../redux/gameSlice';
+import { harvest, updateProgress, purchaseUpgrade } from '../redux/gameSlice';
 import '../styles/Building.css'; // Updated import statement
 import ProgressBar from './ProgressBar';
 import {calculateHarvestValue} from '../helpers';
@@ -44,7 +44,7 @@ function Building({ id, name, growthTime, progress, lastUpdated, level, baseHarv
           onClick={() => dispatch(harvest(id))} 
           disabled={!canHarvest} // Disable the button if the plant cannot be harvested
         >
-          Collect {formatNumber(harvestValue)}
+          Collect ${formatNumber(harvestValue)}
         </button>
         {upgrades.map((upgrade) => (
           <Upgrade key={upgrade.id} {...upgrade} onPurchase={() => dispatch(purchaseUpgrade(upgrade.id))} />

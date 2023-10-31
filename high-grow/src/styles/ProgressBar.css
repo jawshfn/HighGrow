@@ -8,7 +8,7 @@
 }
 
 .progress {
-    background-color: rgb(255, 0, 213); /* Neon green progress bar */
+    background-color: rgb(230, 0, 255); /* Neon green progress bar */
     height: 100%;
     transition: width 0.5s ease-in-out;
     border-radius: 12px; /* Added for rounded corners */
@@ -18,7 +18,7 @@
     position: absolute; /* Added for absolute positioning */
     width: 100%;
     text-align: center;
-    color: #00ff09; /* White */
+    color: #ffffff; /* White */
     font-weight: bold; /* Bold font */
     line-height: 20px; /* Align vertically */
 }
