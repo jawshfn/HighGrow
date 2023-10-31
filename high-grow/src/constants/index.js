@@ -55,11 +55,15 @@ export const managerNames = [ "Kara the Kiosk Keeper",
 "Transport Titan Tessa",
 "Tower Topper Toby"
 ];
+export const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 
+'laundromat.png', 'boutique.png', 'bookstore.png', 'theater.png', 'art-gallery.png',
+ 'tech-hub.png', 'hotel.png', 'skating-rink.png', 'gym.png', 'marketplace.png', 
+ 'condominium.png', 'music-club.png', 'aquarium.png'];
 export const achievements = [
   {
     id: 1,
     name: "First Purchase",
-    description: "Buy your first building.",
+    description: "Buy your first building",
     condition: (state) => state.buildings.some(building => building.count > 0),
     reward: { type: "currency", amount: 100 },
     isAchieved: false,
@@ -67,111 +71,84 @@ export const achievements = [
   },
   {
     id: 2,
-    name: "Entrepreneur",
-    description: "Own one of every building.",
-    condition: (state) => state.buildings.every(building => building.count > 0),
-    reward: { type: "currency", amount: 500 },
+    name: "Minor Mogul",
+    description: "Own 5 buildings",
+    condition: (state) => state.buildings.reduce((acc, building) => acc + building.count, 0) >= 5,
+    reward: { type: "currency", amount: 250 },
     isAchieved: false,
     isClaimed: false
   },
   {
-    id: 'cityNovice',
-    name: 'City Novice',
-    description: 'Own at least one of every building type.',
-    condition: (state) => state.buildings.every(building => building.count >= 1),
-    reward: {
-        type: 'currency',
-        amount: 500
-    },
+    id: 3,
+    name: "Level 10 Achieved!",
+    description: "Get a building to level 10",
+    condition: (state) => state.buildings.some(building => building.level >= 10),
+    reward: { type: "currency", amount: 1000 },
     isAchieved: false,
     isClaimed: false
-},
-{
-    id: 'neonTycoon',
-    name: 'Neon Tycoon',
-    description: 'Earn a cumulative total of 10,000 currency.',
+  },
+  {
+    id: 4,
+    name: "Entrepreneur",
+    description: "Own one of every building.",
+    condition: (state) => state.buildings.every(building => building.count > 0),
+    reward: { type: "currency", amount: 1000000 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 5,
+    name: "Early Bird",
+    description: "Earn 1,000 currency",
+    condition: (state) => state.currency >= 1000,
+    reward: { type: "currency", amount: 1000 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 6,
+    name: "Building Diversifier",
+    description: "Own at least one of 3 different building types",
+    condition: (state) => state.buildings.filter(building => building.count > 0).length >= 3,
+    reward: { type: "currency", amount: 1500 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 7,
+    name: "Neon Novice",
+    description: "Earn 5,000 currency",
+    condition: (state) => state.currency >= 5000,
+    reward: { type: "currency", amount: 2500 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 8,
+    name: "Manager Maestro",
+    description: "Hire 3 managers",
+    condition: (state) => state.managers.filter(manager => manager.isHired).length >= 3,
+    reward: { type: "currency", amount: 3500 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 9,
+    name: "City Developer",
+    description: "Own 20 buildings",
+    condition: (state) => state.buildings.reduce((acc, building) => acc + building.count, 0) >= 20,
+    reward: { type: "currency", amount: 5000 },
+    isAchieved: false,
+    isClaimed: false
+  },
+  {
+    id: 10,
+    name: "Neon Knight",
+    description: "Earn 10,000 currency",
     condition: (state) => state.currency >= 10000,
-    reward: {
-        type: 'currency',
-        amount: 1000
-    },
+    reward: { type: "currency", amount: 7500 },
     isAchieved: false,
     isClaimed: false
-},
-{
-    id: 'managerMagnate',
-    name: 'Manager Magnate',
-    description: 'Hire all managers.',
-    condition: (state) => state.managers.every(manager => manager.isHired),
-    reward: {
-        type: 'currency',
-        amount: 1500
-    },
-    isAchieved: false,
-    isClaimed: false
-},
-{
-    id: 'cityOfLights',
-    name: 'City of Lights',
-    description: 'Reach level 10 for any building.',
-    condition: (state) => state.buildings.some(building => building.count >= 10),
-    reward: {
-        type: 'currency',
-        amount: 2000
-    },
-    isAchieved: false,
-    isClaimed: false
-},
-{
-    id: 'neonConnoisseur',
-    name: 'Neon Connoisseur',
-    description: 'Spend a cumulative total of 5,000 currency on upgrades.',
-    // This condition assumes there's a totalSpent variable in the state.
-    condition: (state) => state.totalSpent >= 5000, 
-    reward: {
-        type: 'currency',
-        amount: 2500
-    },
-    isAchieved: false,
-    isClaimed: false
-},
-{
-    id: 'cityLuminary',
-    name: 'City Luminary',
-    description: 'Reach a total city population of 100,000.',
-    // This condition assumes there's a population variable in the state.
-    condition: (state) => state.population >= 100000,
-    reward: {
-        type: 'currency',
-        amount: 3000
-    },
-    isAchieved: false,
-    isClaimed: false
-},
-{
-    id: 'neonExpert',
-    name: 'Neon Expert',
-    description: 'Play the game for 7 consecutive days.',
-    // This condition assumes there's a consecutiveDaysLoggedIn variable in the state.
-    condition: (state) => state.consecutiveDaysLoggedIn >= 7,
-    reward: {
-        type: 'currency',
-        amount: 3500
-    },
-    isAchieved: false,
-    isClaimed: false
-},
-{
-    id: 'citysPride',
-    name: "City's Pride",
-    description: 'Own 50 of any single building type.',
-    condition: (state) => state.buildings.some(building => building.count >= 50),
-    reward: {
-        type: 'currency',
-        amount: 4000
-    },
-    isAchieved: false,
-    isClaimed: false
-}
+  },
   // ... (you can add more achievements here)
 ];

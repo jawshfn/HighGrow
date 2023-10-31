@@ -7,13 +7,17 @@
   margin: 10px;
   text-align: center;
   box-shadow: 0 0 5px #0f0, 0 0 10px #0f0; /* Neon glow */
-  width: 23em;
+  width: 300px;
 }
 /* Plant Info */
 h3 {
   color: rgb(255, 255, 255);
-  margin: 5px;
-  padding: 5px;
+  margin: 8px;
+  padding: 8px;
+  font-size: 25px;
+}
+p {
+  font-size: 21px;
 }
 .building, .building p {
   font-family: 'Roboto', sans-serif;
@@ -38,11 +42,13 @@ h3 {
   background-color: #ffffff; /* Text Color */
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: inset 0px a1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  
 }
 
 .progress-bar {
-  height: 22px;
+  height: 25px;
   background-color: #0f0; /* Neon green progress bar */
   transition: width 0.3s ease-in-out;
 }
@@ -66,8 +72,9 @@ h3 {
 
 .collect-button, 
 .upgrade-button {
-  width: 170px;  /* Adjust based on desired width */
-  height: 50px;  /* Adjust based on desired height */
+  width: 136px;  /* Adjust based on desired width */
+  height: 60px;  /* Adjust based on desired height */
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;

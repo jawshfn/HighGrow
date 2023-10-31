@@ -6,6 +6,7 @@ import { hireManager } from '../redux/gameSlice';
 import '../styles/ManagerPage.css'; // Importing CSS
 import { formatNumber } from '../util/formatNumber';
 import '../styles/ManagerPage.css';
+import CurrencyDisplay from './CurrencyDisplay';
 
 function ManagerPage({ onHire }) {
   const dispatch = useDispatch();
@@ -27,7 +28,9 @@ return (
         
       </nav>
       <div className="currency-container">
-        <h2>${formatNumber(currency)}</h2>
+      {(
+        <CurrencyDisplay currency={formatNumber(currency)} /> // Use the new component
+      )}
       </div>
       <h1>Managers</h1>
       <div className="managers-container">

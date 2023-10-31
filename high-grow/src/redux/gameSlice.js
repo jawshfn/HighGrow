@@ -1,7 +1,7 @@
 // src/redux/gameSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
-import { buildingNames, managerNames, achievements } from '../constants';
+import { buildingNames, managerNames, achievements, buildingImages } from '../constants';
 
 export function startGameProgression(dispatch) {
   setInterval(() => {
@@ -9,14 +9,10 @@ export function startGameProgression(dispatch) {
   }, 1000);  // Every second
 }
 
-const buildingImages = ['kiosk.png', 'cafe.png', 'arcade.png', 'diner.png', 'laundromat.png', 'boutique.png',
- 'bookstore.png', 'theater.png', 'art-gallery.png', 'tech-hub.png', 'hotel.png', 'skating-rink.png',
-  'gym.png', 'marketplace.png', 'condominium.png', 'music-club.png', 'aquarium.png'];
-  
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    currency: 100,
+    currency: 5000,
     achievements: achievements,
     buildings: (() => {
 
@@ -32,7 +28,6 @@ const gameSlice = createSlice({
         harvestValue: Math.floor(10 * (1.5 ** index)),
         hasManager: false,
         count: 0,
-        elapsedTime: 0,
       }));
     })(),
     upgrades: [
@@ -118,7 +113,6 @@ const gameSlice = createSlice({
         state.currency = Math.floor(state.currency);
         manager.isHired = true;
 
-
         // Optionally: Mark the associated building as having a hired manager
         const building = state.buildings.find((p) => p.id === manager.buildingId);
         if (building) {
@@ -145,10 +139,20 @@ const gameSlice = createSlice({
             }
         }
         });
+        state.achievements.forEach(achievement => {
+          if (!achievement.isAchieved && achievement.condition(state)) {
+            achievement.isAchieved = true;
+            // You can also add the reward logic here or keep it separate
+            // ... handle other reward types
+          }
+        });
       },
-
+      updateAchievement: (state, action) => {
+        const achievement = state.achievements.find(a => a.id === action.payload);
+        achievement.isAchieved = true;
+    }
   }
 });
 
-export const { harvest, purchaseUpgrade, hireManager, updateProgress, claimAchievementReward, progressTime } = gameSlice.actions;
+export const { harvest, purchaseUpgrade, hireManager, updateProgress, claimAchievementReward, updateAchievement } = gameSlice.actions;
 export default gameSlice.reducer;
