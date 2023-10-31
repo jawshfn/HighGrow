@@ -32,7 +32,7 @@ const AchievementsPage = () => {
                 <div className="achievement" key={achievement.id}>
                     <h3>{achievement.name}</h3>
                     <p>{achievement.description}</p>
-                    <p>$ {achievement.reward.amount}</p>
+                    <p>$ {formatNumber(achievement.reward.amount)}</p>
                     {achievement.isAchieved ? (
     achievement.isClaimed ? (
         <button disabled>Claimed</button>

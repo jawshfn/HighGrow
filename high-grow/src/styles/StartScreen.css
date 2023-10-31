@@ -1,6 +1,6 @@
 /* src/styles/StartScreen.css */
 .start-screen {
-  background-image: url('https://raw.githubusercontent.com/jawshfn/HighGrow/main/high-grow/public/images/neon-city5.png?token=GHSAT0AAAAAACIXSWCJC45ETWPTX2WUCFUAZJ2W5OA'); /* Replace 'your_image_filename.jpg' with your actual filename */
+  background-image: url('/public/images/neon-city5.png'); /* Replace 'your_image_filename.jpg' with your actual filename */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
