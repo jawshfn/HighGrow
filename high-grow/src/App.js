@@ -19,7 +19,7 @@ function App() {
         startGameProgression(dispatch);
     }, [dispatch]);
   return (
-    <Router basename='/high-grow'>
+    <Router>
       <div className="app">
         <Routes>
           <Route path="/managers" element={<ManagerPage />} />
