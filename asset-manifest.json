@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.b59c61f4.css",
-    "main.js": "/static/js/main.ce1dbecd.js",
-    "static/media/neon-city5.png": "/static/media/neon-city5.21bee6504fc52d25b9bd.png",
-    "index.html": "/index.html",
-    "main.b59c61f4.css.map": "/static/css/main.b59c61f4.css.map",
-    "main.ce1dbecd.js.map": "/static/js/main.ce1dbecd.js.map"
+    "main.css": "/NeonCity/static/css/main.cf66e254.css",
+    "main.js": "/NeonCity/static/js/main.7d92697c.js",
+    "static/media/neon-city5.png": "/NeonCity/static/media/neon-city5.21bee6504fc52d25b9bd.png",
+    "index.html": "/NeonCity/index.html",
+    "main.cf66e254.css.map": "/NeonCity/static/css/main.cf66e254.css.map",
+    "main.7d92697c.js.map": "/NeonCity/static/js/main.7d92697c.js.map"
   },
   "entrypoints": [
-    "static/css/main.b59c61f4.css",
-    "static/js/main.ce1dbecd.js"
+    "static/css/main.cf66e254.css",
+    "static/js/main.7d92697c.js"
   ]
 }
