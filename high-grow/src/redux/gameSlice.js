@@ -2,7 +2,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { calculateUpgradeCost, calculateHarvestValue } from '../helpers';
 import { buildingNames, managerNames, achievements, buildingImages } from '../constants';
-
 export function startGameProgression(dispatch) {
   setInterval(() => {
       dispatch(updateProgress());
@@ -40,7 +39,6 @@ const gameSlice = createSlice({
     currency: 5000,
     achievements: achievements,
     buildings: (() => {
-
       // Return the buildings array with specific names
       return buildingNames.map((name, index) => ({
         id: index + 1,

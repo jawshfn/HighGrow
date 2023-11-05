@@ -2,16 +2,17 @@
 import React from 'react';
 import { gsap } from "gsap";
 import '../styles/StartScreen.css';
+import { useNavigate } from 'react-router-dom';
 
 function StartScreen() {
+  const navigate = useNavigate();
   function handleStartClick() {
     gsap.to(".start-screen", {
       duration: 0.5,
       opacity: 0,
       y: -100,
       onComplete: () => {
-        // Redirect to the game after the animation
-        window.location.href = "/game";
+        navigate('/game');
       }
     });
   }

@@ -26,7 +26,7 @@ function Building({ id, name, growthTime, progress, lastUpdated, level, baseHarv
   return (
     <div className="building">
       <h3>{name}</h3>
-      <img src={`/images/${photo}`} alt={name} className="building-image" />
+      <img src={`${process.env.PUBLIC_URL}/images/${photo}`} alt={name} className="building-image" />
 
       <p>Level: {level}</p>
       <p>Development Time: {growthTime ? (growthTime / 1000).toFixed(2) : 0} s</p> {/* added check here */}
