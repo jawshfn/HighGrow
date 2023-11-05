@@ -64,16 +64,16 @@ export const achievements = [
     id: 1,
     name: "First Purchase",
     description: "Buy your first building",
-    condition: (state) => state.buildings.some(building => building.count > 0),
+    condition: "FIRST_BUILDING",
     reward: { type: "currency", amount: 100 },
     isAchieved: false,
     isClaimed: false
   },
   {
     id: 2,
-    name: "Minor Mogul",
-    description: "Own 5 buildings",
-    condition: (state) => state.buildings.reduce((acc, building) => acc + building.count, 0) >= 5,
+    name: "Level 5 Achieved!",
+    description: "Get a building to level 5",
+    condition: "LEVEL_5_ACHIEVED",
     reward: { type: "currency", amount: 250 },
     isAchieved: false,
     isClaimed: false
@@ -82,7 +82,7 @@ export const achievements = [
     id: 3,
     name: "Level 10 Achieved!",
     description: "Get a building to level 10",
-    condition: (state) => state.buildings.some(building => building.level >= 10),
+    condition: "LEVEL_10_ACHIEVED",
     reward: { type: "currency", amount: 1000 },
     isAchieved: false,
     isClaimed: false
@@ -91,7 +91,7 @@ export const achievements = [
     id: 4,
     name: "Entrepreneur",
     description: "Own one of every building.",
-    condition: (state) => state.buildings.every(building => building.count > 0),
+    condition: "ENTREPRENEUR",
     reward: { type: "currency", amount: 1000000 },
     isAchieved: false,
     isClaimed: false
@@ -100,7 +100,7 @@ export const achievements = [
     id: 5,
     name: "Early Bird",
     description: "Earn 1,000 currency",
-    condition: (state) => state.currency >= 1000,
+    condition: "EARLY_BIRD",
     reward: { type: "currency", amount: 1000 },
     isAchieved: false,
     isClaimed: false
@@ -109,7 +109,7 @@ export const achievements = [
     id: 6,
     name: "Building Diversifier",
     description: "Own at least one of 3 different building types",
-    condition: (state) => state.buildings.filter(building => building.count > 0).length >= 3,
+    condition: "BUILDING_DIVERSITY",
     reward: { type: "currency", amount: 1500 },
     isAchieved: false,
     isClaimed: false
@@ -118,7 +118,7 @@ export const achievements = [
     id: 7,
     name: "Neon Novice",
     description: "Earn 5,000 currency",
-    condition: (state) => state.currency >= 5000,
+    condition: "NEON_NOVICE",
     reward: { type: "currency", amount: 2500 },
     isAchieved: false,
     isClaimed: false
@@ -127,7 +127,7 @@ export const achievements = [
     id: 8,
     name: "Manager Maestro",
     description: "Hire 3 managers",
-    condition: (state) => state.managers.filter(manager => manager.isHired).length >= 3,
+    condition: "MANAGER_MAESTRO",
     reward: { type: "currency", amount: 3500 },
     isAchieved: false,
     isClaimed: false
@@ -136,7 +136,7 @@ export const achievements = [
     id: 9,
     name: "City Developer",
     description: "Own 20 buildings",
-    condition: (state) => state.buildings.reduce((acc, building) => acc + building.count, 0) >= 20,
+    condition: "CITY_DEVELOPER",
     reward: { type: "currency", amount: 5000 },
     isAchieved: false,
     isClaimed: false
@@ -145,7 +145,7 @@ export const achievements = [
     id: 10,
     name: "Neon Knight",
     description: "Earn 10,000 currency",
-    condition: (state) => state.currency >= 10000,
+    condition: "NEON_KNIGHT",
     reward: { type: "currency", amount: 7500 },
     isAchieved: false,
     isClaimed: false

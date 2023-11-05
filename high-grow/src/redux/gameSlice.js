@@ -8,7 +8,32 @@ export function startGameProgression(dispatch) {
       dispatch(updateProgress());
   }, 1000);  // Every second
 }
-
+const evaluateCondition = (conditionId, state) => {
+  switch (conditionId) {
+    case "FIRST_BUILDING":
+      return state.buildings.some(building => building.count > 0); 
+    case "LEVEL_5_ACHIEVED":
+      return state.buildings.reduce((acc, building) => acc + building.count, 0) >= 5;
+    case "LEVEL_10_ACHIEVED":
+        return state.buildings.some(building => building.level >= 10);
+    case "ENTREPRENEUR":
+        return state.buildings.every(building => building.count > 0);
+    case "EARLY_BIRD":
+        return state.currency >= 1000;
+    case "BUILDING_DIVERSITY":
+        return state.buildings.filter(building => building.count > 0).length >= 3;
+    case "NEON_NOVICE":
+        return state.currency >= 5000;
+    case "MANAGER_MAESTRO":
+        return state.managers.filter(manager => manager.isHired).length >= 3;
+    case "CITY_DEVELOPER":
+        return state.buildings.reduce((acc, building) => acc + building.count, 0) >= 20;
+    case "NEON_KNIGHT":
+        return state.currency >= 10000;
+    default:
+      return false;
+  }
+};
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
@@ -72,16 +97,18 @@ const gameSlice = createSlice({
         
         if (upgrade.effect === 'increaseYield') {
           const building = state.buildings.find((p) => p.id === upgrade.buildingId);
+          if(building.level === 9) {
+            building.growthTime /= 2;
+          }
           if (building) {
             building.count +=1;
             building.level++;
             building.harvestValue = calculateHarvestValue(building.harvestValue, building.level);
-
           }
           upgrade.cost = calculateUpgradeCost(upgrade.cost, building.level); // Use helper function
         }
         state.achievements.forEach(achievement => {
-          if (!achievement.isAchieved && achievement.condition(state)) {
+          if (!achievement.isAchieved && evaluateCondition(achievement.condition, state)) {
             achievement.isAchieved = true;
             // You can also add the reward logic here or keep it separate
             // ... handle other reward types
@@ -140,7 +167,7 @@ const gameSlice = createSlice({
         }
         });
         state.achievements.forEach(achievement => {
-          if (!achievement.isAchieved && achievement.condition(state)) {
+          if (!achievement.isAchieved && evaluateCondition(achievement.condition, state)) {
             achievement.isAchieved = true;
             // You can also add the reward logic here or keep it separate
             // ... handle other reward types
