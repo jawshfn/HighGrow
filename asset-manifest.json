@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/NeonCity/static/css/main.cf66e254.css",
-    "main.js": "/NeonCity/static/js/main.43e43ae5.js",
+    "main.js": "/NeonCity/static/js/main.ec691f06.js",
     "static/media/neon-city5.png": "/NeonCity/static/media/neon-city5.21bee6504fc52d25b9bd.png",
     "index.html": "/NeonCity/index.html",
     "main.cf66e254.css.map": "/NeonCity/static/css/main.cf66e254.css.map",
-    "main.43e43ae5.js.map": "/NeonCity/static/js/main.43e43ae5.js.map"
+    "main.ec691f06.js.map": "/NeonCity/static/js/main.ec691f06.js.map"
   },
   "entrypoints": [
     "static/css/main.cf66e254.css",
-    "static/js/main.43e43ae5.js"
+    "static/js/main.ec691f06.js"
   ]
 }
